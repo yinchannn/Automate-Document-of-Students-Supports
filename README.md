@@ -1,7 +1,7 @@
 # Automating Documentation of Supporting Measures for Students with Diverse Needs
 
 ## Introduction
-This project aim to help a school to generate a record sheet of the supporting measures conducted on each individual student with special education need(s) in a specified academic year.
+This project aim to help a school to generate individual record sheets of the supporting measures conducted on students with special education needs in a specified academic year.
 <br/>
 Since there are more than 4 000 supporting measures conducted on about 70 students in the year, filling in the record sheets manually would be a time-consuming job. Automating the documentation progress could hugely increase the productivity.
 <br/>
@@ -11,9 +11,9 @@ A record sheet generated should contain the following items:
 - student name stated in appropriate place
 - class stated in appropriate place
 - learning difficulties stated in appropriate place
-- the one or two elective subject(s) taken by the student stated in appropriate place
-- ticks indicating the supporting measures conducted in specified subjects
-- student's scores in each subject in 1st term exam
+- the elective subject(s) taken by the student stated in appropriate place
+- ticks indicating the supporting measures conducted in different subjects
+- student's score in each subject in 1st term exam
 - student's average score in 1st term exam
 - student's form position in 1st term exam
 <br/>
@@ -220,4 +220,4 @@ for code in info.index:
     print(filename + ' done!')
 print('S5 all done!')
 ```
-<img src="Results.png" width="800">
+<img src="Result.png" width="800">
