@@ -1,5 +1,5 @@
 # Automating Documentation of Supporting Measures for Students with Diverse Needs
-The following Python codes aim to generate a record sheet (.docx file) of the supporting measures conducted to each individual student with special education need(s) in the specified academic year.
+The following Python codes aim to generate a record sheet (.docx file) of the supporting measures conducted to each individual student with special education need(s) in the specified academic year from a template file.
 <br/><br/>
 A record sheet generated should contain the following items:
 - a filename in the format of "Class Student Name.docx"
@@ -20,7 +20,7 @@ The necessary information are stored in different excel files:
 <br/>
 Note that all raw data in this demonstration are anoymized and modified in order to protect students and the school's privacy.
 <br/>
-<br/>
+
 Install python-docx and import the necessary packages to Python.
 
 ```python
@@ -29,15 +29,45 @@ from docx import Document
 import pandas as pd
 import numpy as np
 ```
-
-Read the students' information from the excel file. Convert it into a dataframe and clean it.
+<br/>
+Read students' information from the excel file. Convert it into a dataframe and clean it.
 
 ```python
+#Getting students' info
 info = pd.read_excel('Students_Info.xlsx')
 info = pd.DataFrame(info)
+
+#Clean info dataframe
 info.rename(columns={'SEN\nCode':'SEN Code'}, inplace=True)
 info['SEN Code'] = info['SEN Code'].astype(int)
+
+#Set index
 info.set_index(['SEN Code'], inplace=True)
 ```
+<img src="Students_Info.png" width="500">
+<br/>
+Read the template file. Convert all tables into one dataframe and clean it.
 
-![Students Info](Students_Info.png)
+```python
+#Read the template file
+doc = Document('template_s5.docx')
+
+#Convert tables into one dataframe
+table_list = []
+for table in doc.tables:
+    data = [[cell.text for cell in row.cells] for row in table.rows]
+    table_list.append(pd.DataFrame(data))
+df = pd.concat(table_list)
+
+#Set header
+df.columns = ['Item', 'Supporting Measure', 'Chi', 'Eng', 'Mat', 'LS', 'X1', 'X2', 'RE', 'PE', 'Avg', 'Position', 'Position']
+
+#Clean the dataframe
+df['Item'] = df['Item'].str.strip()
+df['Supporting Measure'] = df['Supporting Measure'].str.strip()
+
+#Set index
+df.set_index('Supporting Measure', inplace=True)
+```
+<img src="Template.png" width="500">
+<br/>
