@@ -1,7 +1,7 @@
 # Automating Documentation of Supporting Measures for Students with Diverse Needs
 
 ## Introduction
-This project aim to help a school to generate individual record sheets of the supporting measures conducted on students with special education needs in a specified academic year.
+This project aims to help a school to generate individual record sheets of the supporting measures conducted on students with special education needs in a specified academic year.
 <br/>
 Since there are more than 4 000 supporting measures conducted on about 70 students in the year, filling in the record sheets manually would be a time-consuming job. Automating the documentation progress could hugely increase the productivity.
 <br/>
